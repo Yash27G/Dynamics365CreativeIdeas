@@ -1,0 +1,8 @@
+There are mainly 2 functions.
+1)Get-EmailServerProfile:
+This Script is used to check Status of Email Server Profile and mailboxes related to it.
+Save status of Mailboxes in CSV and maintain the record for evidence purpose.
+If any thing goes wrong in mailbox Script will send email with mailbox status history as an attachment.
+
+2)Test-Mailbox:
+Last but not least, will do sanity test for user, script will send the email and receive one to mailbox.
