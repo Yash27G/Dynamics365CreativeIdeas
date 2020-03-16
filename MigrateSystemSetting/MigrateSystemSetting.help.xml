@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<helpItems schema="maml" xmlns="http://msh">
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<!--Command-->
+		<command:details>
+			<command:name>Get-SystemSettingFromSource</command:name>
+			<maml:description>
+				<maml:para>This function is used to get system setting form MSD CRM Source environment and save it to a CSV file.</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para />
+			</maml:copyright>
+			<command:verb>Get</command:verb>
+			<command:noun>SystemSettingFromSource</command:noun>
+			<dev:version />
+		</command:details>
+		<maml:description>
+			<maml:para>Author : Yash Gupta(YG).
+The Module "MigrateSystemSetting" is used to migrate the system settings of one MSD CRM instance to another.
+NOTE: Module will only work on attributes which are valid for an update, not virtual.</maml:para>
+			<maml:para>The function Get-SystemSettingFromSource is a parameterized function.
+You should pass arguments to the function using Named parameterized.
+The credentials will be saved in Window's Credential Manager.</maml:para>
+		</maml:description>
+		<command:syntax>
+			<!--Parameter Sets-->
+			<command:syntaxItem>
+				<maml:name>Get-SystemSettingFromSource</maml:name>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>SrcURL</maml:name>
+					<maml:description>
+						<maml:para>Source URL</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">https://example.crm8.dynamics.com</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>DataFilepath</maml:name>
+					<maml:description>
+						<maml:para>Path to save CSV file.
+Path should be available.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">C:\Migratesystemsetting\Source System Settings.csv</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>LogFilePath</maml:name>
+					<maml:description>
+						<maml:para>Path to save Success Logs.
+path Should be available.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">C:\Migratesystemsetting\Success.log</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>ErrorLogFilePath</maml:name>
+					<maml:description>
+						<maml:para>Path to save Error Logs.
+path should be available.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">C:\Migratesystemsetting\Error.log</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<command:parameters>
+			<!-- All Parameters-->
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>SrcURL</maml:name>
+				<maml:description>
+					<maml:para>Source URL</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">https://example.crm8.dynamics.com</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>DataFilepath</maml:name>
+				<maml:description>
+					<maml:para>Path to save CSV file.
+Path should be available.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">C:\Migratesystemsetting\Source System Settings.csv</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>LogFilePath</maml:name>
+				<maml:description>
+					<maml:para>Path to save Success Logs.
+path Should be available.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">C:\Migratesystemsetting\Success.log</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>Non</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>ErrorLogFilePath</maml:name>
+				<maml:description>
+					<maml:para>Path to save Error Logs.
+path should be available.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">C:\Migratesystemsetting\Error.log</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+		</command:parameters>
+		<command:inputTypes>
+			<!-- Inputs-->
+			<command:inputType>
+				<dev:type>
+					<maml:name>Source URL</maml:name>
+					<maml:uri>"https://Source.crm8.dynamics.com"</maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>Data file path</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Path where user want to save the CSV file which contains all the attributes, its type and value. As well for instance name.</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>Success Log File</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Path where user want to save Success Log file.</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>Error Log File</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Path where user want to save an error log file.</maml:para>
+				</maml:description>
+			</command:inputType>
+		</command:inputTypes>
+		<command:returnValues>
+			<!-- Outputs-->
+			<command:returnValue>
+				<dev:type>
+					<maml:name>CSV File created in mentioned path of DataFilePath</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+			</command:returnValue>
+		</command:returnValues>
+		<maml:alertSet>
+			<!-- Notes-->
+			<maml:title>Remarks</maml:title>
+			<maml:alert>
+				<maml:para>To see the examples, type: "get-help Get-SystemSettingFromSource -examples".
+  For more information, type: "get-help Get-SystemSettingFromSource -detailed".
+  For technical information, type: "get-help Get-SystemSettingFromSource -full".</maml:para>
+				<maml:para />
+			</maml:alert>
+		</maml:alertSet>
+		<command:examples>
+			<!-- Examples-->
+			<command:example>
+				<maml:title>EXAMPLE 1:___________________________ Get-SystemSettingFromSource -SrcURL &lt;SourceURL&gt; -DataFilepath &lt;Path to save csv file&gt; -LogFilePath &lt;Path to save Success Logs&gt; -ErrorLogFilePath &lt;Path to save Error Logs&gt;</maml:title>
+				<maml:introduction>
+					<maml:para>This Example get system settings from MSD CRM source environment and save it to user specified CSV file path.</maml:para>
+				</maml:introduction>
+				<dev:code>C:\PS&gt; get-help Get-SystemSettingFromSource -examples</dev:code>
+				<dev:remarks>
+					<maml:para />
+				</dev:remarks>
+			</command:example>
+			<command:example>
+				<maml:title>EXAMPLE 2:_________________ Get-SystemSettingFromSource -SrcURL "https://example.crm8.dynamics.com" -DataFilepath "C:\Migratesystemsetting\Source System Settings.csv" -LogFilePath "C:\Migratesystemsetting\Success.log" -ErrorLogFilePath "C:\Migratesystemsetting\Error.log"</maml:title>
+				<maml:introduction>
+					<maml:para>This example shows pasing named paramter with real time values.</maml:para>
+				</maml:introduction>
+				<dev:code>C:\PS&gt; Get-Help Get-SystemSettingFromSource -examples</dev:code>
+				<dev:remarks>
+					<maml:para />
+				</dev:remarks>
+			</command:example>
+		</command:examples>
+	</command:command>
+	<!-- Edited with: SAPIEN PowerShell HelpWriter 2020 v2.3.46-->
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<!-- Command-->
+		<command:details>
+			<command:name>Set-SystemSettingInTarget</command:name>
+			<maml:description>
+				<maml:para>This function is used to set system setting to MSD CRM target environment.</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para />
+			</maml:copyright>
+			<command:verb>Set</command:verb>
+			<command:noun>SystemSettingInTarget</command:noun>
+			<dev:version />
+		</command:details>
+		<maml:description>
+			<maml:para>Author : Yash Gupta(YG).
+The Module "MigrateSystemSetting" is used to migrate the system settings of one MSD CRM instance to another.
+NOTE: Module will only work on attributes which are valid for an update, not virtual.</maml:para>
+			<maml:para>This function is a parameterized function.
+You should pass arguments to the function used named parameterized.
+Use the same Data file which was generated by Get-SystemSettingFromSource.
+The credentials will be saved in Window's Credential Manager.</maml:para>
+		</maml:description>
+		<command:syntax>
+			<!-- Parameter Sets-->
+			<command:syntaxItem default="true">
+				<!--TAG: DEFAULT-->
+				<maml:name>Set-SystemSettingInTarget</maml:name>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10">
+					<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">TrgtURL</maml:name>
+					<maml:description xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+						<maml:para>Target URL</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">https://example.crm8.dynamics.com</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+						<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">String</maml:name>
+						<maml:uri xmlns:maml="http://schemas.microsoft.com/maml/2004/10" />
+					</dev:type>
+					<dev:defaultValue xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10">
+					<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">DataFilepath</maml:name>
+					<maml:description xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+						<maml:para>Path to save CSV file.
+Path should be available.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">C:\Migratesystemsetting\Source System Settings.csv</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+						<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">String</maml:name>
+						<maml:uri xmlns:maml="http://schemas.microsoft.com/maml/2004/10" />
+					</dev:type>
+					<dev:defaultValue xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10">
+					<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">LogFilePath</maml:name>
+					<maml:description xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+						<maml:para>Path to save Success Logs.
+path Should be available.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">C:\Migratesystemsetting\Success.log</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+						<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">String</maml:name>
+						<maml:uri xmlns:maml="http://schemas.microsoft.com/maml/2004/10" />
+					</dev:type>
+					<dev:defaultValue xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10">
+					<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">ErrorLogFilePath</maml:name>
+					<maml:description xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+						<maml:para>Path to save Error Logs.
+path should be available.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">C:\Migratesystemsetting\Error.log</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+						<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">String</maml:name>
+						<maml:uri xmlns:maml="http://schemas.microsoft.com/maml/2004/10" />
+					</dev:type>
+					<dev:defaultValue xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">None</dev:defaultValue>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<command:parameters>
+			<!-- All Parameters-->
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10">
+				<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">TrgtURL</maml:name>
+				<maml:description xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+					<maml:para>Target URL</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">https://example.crm8.dynamics.com</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+					<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">String</maml:name>
+					<maml:uri xmlns:maml="http://schemas.microsoft.com/maml/2004/10" />
+				</dev:type>
+				<dev:defaultValue xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10">
+				<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">DataFilepath</maml:name>
+				<maml:description xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+					<maml:para>Path to save CSV file.
+Path should be available.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">C:\Migratesystemsetting\Source System Settings.csv</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+					<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">String</maml:name>
+					<maml:uri xmlns:maml="http://schemas.microsoft.com/maml/2004/10" />
+				</dev:type>
+				<dev:defaultValue xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10">
+				<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">LogFilePath</maml:name>
+				<maml:description xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+					<maml:para>Path to save Success Logs.
+path Should be available.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">C:\Migratesystemsetting\Success.log</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+					<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">String</maml:name>
+					<maml:uri xmlns:maml="http://schemas.microsoft.com/maml/2004/10" />
+				</dev:type>
+				<dev:defaultValue xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10">
+				<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">ErrorLogFilePath</maml:name>
+				<maml:description xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+					<maml:para>Path to save Error Logs.
+path should be available.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">C:\Migratesystemsetting\Error.log</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+					<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">String</maml:name>
+					<maml:uri xmlns:maml="http://schemas.microsoft.com/maml/2004/10" />
+				</dev:type>
+				<dev:defaultValue xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">None</dev:defaultValue>
+			</command:parameter>
+		</command:parameters>
+		<command:inputTypes>
+			<!-- Inputs-->
+			<command:inputType xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10">
+				<dev:type xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+					<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">Target URL</maml:name>
+					<maml:uri xmlns:maml="http://schemas.microsoft.com/maml/2004/10">"https://Source.crm8.dynamics.com"</maml:uri>
+				</dev:type>
+				<maml:description xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+					<maml:para />
+				</maml:description>
+			</command:inputType>
+			<command:inputType xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10">
+				<dev:type xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+					<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">Data file path</maml:name>
+					<maml:uri xmlns:maml="http://schemas.microsoft.com/maml/2004/10"></maml:uri>
+				</dev:type>
+				<maml:description xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+					<maml:para>Path where user want to save the CSV file which contains all the attributes, its type and value. As well for instance name.</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10">
+				<dev:type xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+					<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">Success Log File</maml:name>
+					<maml:uri xmlns:maml="http://schemas.microsoft.com/maml/2004/10"></maml:uri>
+				</dev:type>
+				<maml:description xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+					<maml:para>Path where user want to save Success Log file.</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10">
+				<dev:type xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+					<maml:name xmlns:maml="http://schemas.microsoft.com/maml/2004/10">Error Log File</maml:name>
+					<maml:uri xmlns:maml="http://schemas.microsoft.com/maml/2004/10"></maml:uri>
+				</dev:type>
+				<maml:description xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+					<maml:para>Path where user want to save an error log file.</maml:para>
+				</maml:description>
+			</command:inputType>
+		</command:inputTypes>
+		<command:returnValues>
+			<!-- Outputs-->
+			<command:returnValue>
+				<dev:type>
+					<maml:name>System Settings will be set in target environment</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+			</command:returnValue>
+		</command:returnValues>
+		<maml:alertSet>
+			<!-- Notes-->
+			<maml:alert>
+				<maml:para>To see the examples, type: "get-help Set-SystemSettingInTarget -examples".
+  For more information, type: "get-help Set-SystemSettingInTarget -detailed".
+  For technical information, type: "get-help Set-SystemSettingInTarget -full".</maml:para>
+				<maml:para />
+			</maml:alert>
+		</maml:alertSet>
+		<command:examples>
+			<!-- Examples-->
+			<command:example>
+				<maml:title>EXAMPLE 1: ________________________________Set-SystemSettingInTarget -TrgtURL &lt;TargetURL&gt; -DataFilepath &lt;Path to save csv file&gt; -LogFilePath &lt;Path to save Success Logs&gt; -ErrorLogFilePath &lt;Path to save Error Logs&gt;</maml:title>
+				<maml:introduction>
+					<maml:para />
+				</maml:introduction>
+				<dev:code>C:\PS&gt; Set-SystemSettingInTarget</dev:code>
+				<dev:remarks>
+					<maml:para />
+				</dev:remarks>
+			</command:example>
+			<command:example>
+				<maml:title>EXAMPLE 2:___________________________ Set-SystemSettingInTarget -TrgtURL "https://example.crm8.dynamics.com" -DataFilepath "C:\Migratesystemsetting\Source System Settings.csv" -LogFilePath "C:\Migratesystemsetting\Success.log" -ErrorLogFilePath "C:\Migratesystemsetting\Error.log"</maml:title>
+				<maml:introduction>
+					<maml:para />
+				</maml:introduction>
+				<dev:code>C:\PS&gt; Set-SystemSettingInTarget</dev:code>
+				<dev:remarks>
+					<maml:para />
+				</dev:remarks>
+			</command:example>
+		</command:examples>
+	</command:command>
+</helpItems>
