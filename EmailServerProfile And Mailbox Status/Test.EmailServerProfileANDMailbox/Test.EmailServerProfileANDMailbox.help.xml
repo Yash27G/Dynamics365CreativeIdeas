@@ -1,0 +1,1130 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<helpItems schema="maml" xmlns="http://msh">
+	<!-- Edited with: SAPIEN PowerShell HelpWriter 2020 v2.3.46-->
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<!--Command-->
+		<command:details>
+			<command:name>Test-Mailbox</command:name>
+			<maml:description>
+				<maml:para>This function will get Status of mailbox and send email if necessary</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para />
+			</maml:copyright>
+			<command:verb>Test</command:verb>
+			<command:noun>Mailbox</command:noun>
+			<dev:version />
+		</command:details>
+		<maml:description>
+			<maml:para>Get the status of the mailbox for specified Email Server Profile. If anything goes wrong in mailbox, Script trigger mail with CSV file of mailbox status to specified email Id.
+Cmdlet can used as a part of testing.</maml:para>
+		</maml:description>
+		<command:syntax>
+			<!--Parameter Sets-->
+			<command:syntaxItem>
+				<maml:name>Test-Mailbox</maml:name>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>MailboxName</maml:name>
+					<maml:description>
+						<maml:para>Mailbox Name</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">Mailbox name</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>URL</maml:name>
+					<maml:description>
+						<maml:para>Environment URL</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">https://example.crm8.dynamics.com</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>EmailTo</maml:name>
+					<maml:description>
+						<maml:para>Email Id to send error notification</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">someone@domian.com</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>ServerProfileName</maml:name>
+					<maml:description>
+						<maml:para>Email Server Profile Name</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">Server Name</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>DataFilepath</maml:name>
+					<maml:description>
+						<maml:para>Path to save Mailbox Status File</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">C:\Test.EmailServerProfileANDMailbox\Mailbox Status.csv</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>LogFilePath</maml:name>
+					<maml:description>
+						<maml:para>Path to save Log File.
+NOTE: Path Should present.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">C:\Test Mailbox\Test.log</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>SMTPServer</maml:name>
+					<maml:description>
+						<maml:para>Smtp Server of email id from which email is send</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false"></command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>SMTPPort</maml:name>
+					<maml:description>
+						<maml:para>SMTP Port of email from which email is send</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
+					<dev:type>
+						<maml:name>Integer</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<command:parameters>
+			<!-- All Parameters-->
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>MailboxName</maml:name>
+				<maml:description>
+					<maml:para>Mailbox Name</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">Mailbox name</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>URL</maml:name>
+				<maml:description>
+					<maml:para>Environment URL</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">https://example.crm8.dynamics.com</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>EmailTo</maml:name>
+				<maml:description>
+					<maml:para>Email Id to send error notification</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">someone@domain.com</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>ServerProfileName</maml:name>
+				<maml:description>
+					<maml:para>Email Server Profile Name</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">Server Name</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>DataFilepath</maml:name>
+				<maml:description>
+					<maml:para>Path to save Mailbox Status File</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">C:\Migratesystemsetting\Source System Settings.csv</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>LogFilePath</maml:name>
+				<maml:description>
+					<maml:para>Path to save Log File.
+NOTE: Path Should present.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">C:\Test Mailbox\Test.log</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>SMTPServer</maml:name>
+				<maml:description>
+					<maml:para>Smtp Server of email id from which email is send</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false"></command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>SMTPPort</maml:name>
+				<maml:description>
+					<maml:para>SMTP Port of email from which email is send</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
+				<dev:type>
+					<maml:name>Integer</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+		</command:parameters>
+		<command:inputTypes>
+			<!-- Inputs-->
+			<command:inputType>
+				<dev:type>
+					<maml:name>MailboxName</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Name of the mailbox</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>URL</maml:name>
+					<maml:uri>"https://Source.crm8.dynamics.com"</maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>EmailTo</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Email id of receiver.</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>ServerProfileName</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Name of Email Server Profile</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>DataFilePath</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Path to save status of mailbox in CSV file</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>LogFilePath</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Path to save Log File.
+NOTE: Path Should present.</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>SMTPServer</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>SMTPPort</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+			</command:inputType>
+		</command:inputTypes>
+		<command:returnValues>
+			<!-- Outputs-->
+			<command:returnValue>
+				<dev:type>
+					<maml:name>DataFile</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Save status of mailbox in CSV file in given path</maml:para>
+				</maml:description>
+			</command:returnValue>
+			<command:returnValue>
+				<dev:type>
+					<maml:name>Send Email</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Send Email to given email id with datafile if anything goes wrong in mailbox.</maml:para>
+				</maml:description>
+			</command:returnValue>
+		</command:returnValues>
+		<maml:alertSet>
+			<!-- Notes-->
+			<maml:title>Remark</maml:title>
+			<maml:alert>
+				<maml:para>To see the examples, type: "get-help Test-Mailbox -examples".
+  For more information, type: "get-help Test-Mailbox -detailed".
+  For technical information, type: "get-help Test-Mailbox -full".</maml:para>
+			</maml:alert>
+		</maml:alertSet>
+		<command:examples>
+			<!-- Examples-->
+			<command:example>
+				<maml:title>EXAMPLE 1</maml:title>
+				<maml:introduction>
+					<maml:para />
+				</maml:introduction>
+				<dev:code>C:\PS&gt; Test-Mailbox -MailboxName $MialboxName -URL $URL -EmailTo $EmailTo -ServerProfileName $ServerProfileName -DataFilepath $DataFilepath -LogFilePath $LogFilePath -SMTPServer $SMTPServer -SMTPPort $SMTPPort
+        </dev:code>
+				<dev:remarks>
+					<maml:para />
+				</dev:remarks>
+			</command:example>
+			<command:example>
+				<maml:title>EXAMPLE 2</maml:title>
+				<maml:introduction>
+					<maml:para />
+				</maml:introduction>
+				<dev:code>C:\PS&gt; Test-Mailbox -MailboxName "Mailbox Name" - URL "http:\\example.dynamics.crm8.com" -EmailTo "someone@domain.com" -ServerProfileName "Server Profile Name" -DataFilePath "C:\Test.EmailServerProfileANDMailbox\Mailbox Status.csv" -LogFilePath "C:\Test.EmailServerProfileANDMailbox\StatusLog.log" -SMTPServer "SMTP Server Name" -SMTPPort 25</dev:code>
+				<dev:remarks>
+					<maml:para />
+				</dev:remarks>
+			</command:example>
+		</command:examples>
+	</command:command>
+	<!-- Edited with: SAPIEN PowerShell HelpWriter 2020 v2.3.46-->
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<!-- Command-->
+		<command:details>
+			<command:name>Test-EmailServerProfile</command:name>
+			<maml:description>
+				<maml:para>This function will check the status of Email Server Profile and also checks the status of mailbox.</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para />
+			</maml:copyright>
+			<command:verb>Test</command:verb>
+			<command:noun>EmailServerProfile</command:noun>
+			<dev:version />
+		</command:details>
+		<maml:description>
+			<maml:para>Check Status of Email Server Profile and Mailbox linked with it, internally calls Get-MailboxDetails and send Email if any thing goes wrong in mailbox Status.
+Cmdlet can be used as a part of test.</maml:para>
+		</maml:description>
+		<command:syntax>
+			<!-- Parameter Sets-->
+			<command:syntaxItem>
+				<maml:name>Test-EmailServerProfile</maml:name>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>ServerProfileName</maml:name>
+					<maml:description>
+						<maml:para>Email Server Profile Name</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">Server Profile Name</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>URL</maml:name>
+					<maml:description>
+						<maml:para>Environment URL</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">https:\\example.crm8.dynamics.com</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>DataFilepath</maml:name>
+					<maml:description>
+						<maml:para>Path to save Status of mailbox in CSV file</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">C:\Test.EmailServerProfileANDMailbox\Mailbox Status.csv</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>LogFilePath</maml:name>
+					<maml:description>
+						<maml:para>Path to save Log file.
+NOTE: Path should present.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">C:\Test.EmailServerProfileANDMailbox\StatusLog.log</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>EmailTo</maml:name>
+					<maml:description>
+						<maml:para>Email Id of receiver.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">someone@domain.com</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>SMTPServer</maml:name>
+					<maml:description>
+						<maml:para>SMTP Server Name</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named" aliases="None">
+					<maml:name>SMTPPort</maml:name>
+					<maml:description>
+						<maml:para>SMTP Server Port</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">25</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>Integer</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<command:parameters>
+			<!-- All Parameters-->
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>ServerProfileName</maml:name>
+				<maml:description>
+					<maml:para>Email Server Profile Name</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">Server Profile Name</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>URL</maml:name>
+				<maml:description>
+					<maml:para>Environment URL</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">https:\\example.crm8.dynamics.com</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>DataFilepath</maml:name>
+				<maml:description>
+					<maml:para>Path to save Status of mailbox in CSV file</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">C:\Test.EmailServerProfileANDMailbox\Mailbox Status.csv</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>LogFilePath</maml:name>
+				<maml:description>
+					<maml:para>Path to save Log file.
+NOTE: Path should present.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">C:\Test.EmailServerProfileANDMailbox\StatusLog.log</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>EmailTo</maml:name>
+				<maml:description>
+					<maml:para>Email Id of receiver.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">someone@domain.com</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>SMTPServer</maml:name>
+				<maml:description>
+					<maml:para>SMTP Server Name</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named" aliases="None">
+				<maml:name>SMTPPort</maml:name>
+				<maml:description>
+					<maml:para>SMTP Server Port</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">25</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>Integer</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+		</command:parameters>
+		<command:inputTypes>
+			<!-- Inputs-->
+			<command:inputType>
+				<dev:type>
+					<maml:name>ServerProfileName</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Email Server Profile Name</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>URL</maml:name>
+					<maml:uri>https:\\example.crm8.dynamics.com</maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>DataFilepath</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Path to save Status of mailbox in CSV file</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>LogFilePath</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Path to save Log file.
+NOTE: Path should present.</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>EmailTo</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Email Id of receiver.</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>SMTPServer</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>SMTP Server Name</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>SMTPPort</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>SMTP Server Port</maml:para>
+				</maml:description>
+			</command:inputType>
+		</command:inputTypes>
+		<command:returnValues>
+			<!-- Outputs-->
+			<command:returnValue>
+				<dev:type>
+					<maml:name>DataFilePath</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Create CSV file which contains status of mailbox.</maml:para>
+				</maml:description>
+			</command:returnValue>
+			<command:returnValue>
+				<dev:type>
+					<maml:name>Send Email</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Send Email to Specified User.</maml:para>
+				</maml:description>
+			</command:returnValue>
+		</command:returnValues>
+		<maml:alertSet>
+			<!-- Notes-->
+			<maml:title>Remark</maml:title>
+			<maml:alert>
+				<maml:para>To see the examples, type: "get-help Test-EmailServerProfile -examples".
+  For more information, type: "get-help Test-EmailServerProfile -detailed".
+  For technical information, type: "get-help Test-EmailServerProfile -full".</maml:para>
+			</maml:alert>
+		</maml:alertSet>
+		<command:examples>
+			<!-- Examples-->
+			<command:example>
+				<maml:title>EXAMPLE 1</maml:title>
+				<maml:introduction>
+					<maml:para />
+				</maml:introduction>
+				<dev:code>C:\PS&gt; Test-EmailServerProfile -ServerProfileName $ServerProfileName -URL $URL -DataFilepath $DataFilepath -LogFilePath $LogFilePath -EmailTo $EmailTo -SMTPServer $SMTPServer -SMTPPort $SMTPPort</dev:code>
+				<dev:remarks>
+					<maml:para />
+				</dev:remarks>
+			</command:example>
+			<command:example>
+				<maml:title>EXAMPLE 2</maml:title>
+				<maml:introduction>
+					<maml:para />
+				</maml:introduction>
+				<dev:code>C:\PS&gt; Test-EmailServerProfile -ServerProfileName "Server Profile Name -URL "https:\\example.crm8.dynamics.com" -DataFilepath "C:\Test.EmailServerProfileANDMailbox\Mailbox Status.csv" -LogFilePath "C:\Test.EmailServerProfileANDMailbox\StatusLog.log" -EmailTo "someone@domain.com" -SMTPServer "SMTP Server" -SMTPPort 25</dev:code>
+				<dev:remarks>
+					<maml:para />
+				</dev:remarks>
+			</command:example>
+		</command:examples>
+	</command:command>
+	<!-- Edited with: SAPIEN PowerShell HelpWriter 2020 v2.3.46-->
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<!-- Command-->
+		<command:details>
+			<command:name>SendReceiveMail-Mailbox</command:name>
+			<maml:description>
+				<maml:para>This Cmdlet will test the mailbox by sending and receiving the email to and from mailbox respectively.</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para />
+			</maml:copyright>
+			<command:verb>SendReceiveMail</command:verb>
+			<command:noun>Mailbox</command:noun>
+			<dev:version />
+		</command:details>
+		<maml:description>
+			<maml:para>This Cmdlet will test the mailbox by sending and receiving the email to and from mailbox respectively.</maml:para>
+		</maml:description>
+		<command:syntax>
+			<!-- Parameter Sets-->
+			<command:syntaxItem>
+				<maml:name>SendReceiveMail-Mailbox</maml:name>
+				<command:parameter required="false" globbing="false" pipelineInput="false" variableLength="false" position="named">
+					<maml:name>MailboxEmailId</maml:name>
+					<maml:description>
+						<maml:para>Email Id of Configured Mailbox.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">mailbox@domain.com</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue />
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named">
+					<maml:name>TestEmailId</maml:name>
+					<maml:description>
+						<maml:para>Email Id other than Mailbox Email Id to test the functionality.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">Someone@domain.com</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named">
+					<maml:name>PortForTestEmailId</maml:name>
+					<maml:description>
+						<maml:para>Port No for TestEmailId</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">25</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>Integer</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named">
+					<maml:name>SMTPServerForTestEmailId</maml:name>
+					<maml:description>
+						<maml:para>SMTP server for TestEmailId</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">smtp.domain.com</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named">
+					<maml:name>PortForMailboxEmailId</maml:name>
+					<maml:description>
+						<maml:para>Port Number for Mailbox Email ID</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">25</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>Integer</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named">
+					<maml:name>SMTPServerForMailboxEmailId</maml:name>
+					<maml:description>
+						<maml:para>SMTP Server for Mailbox Email ID</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">smtp.domain.com</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+				<command:parameter required="true" globbing="false" pipelineInput="false" variableLength="false" position="named">
+					<maml:name>LogFilePath</maml:name>
+					<maml:description>
+						<maml:para>Path to save Log File.
+NOTE: Path Should present.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+					<command:parameterValueGroup>
+						<command:parameterValue required="false" variableLength="false">C:\Test Mailbox\Test.log</command:parameterValue>
+					</command:parameterValueGroup>
+					<dev:type>
+						<maml:name>String</maml:name>
+						<maml:uri />
+					</dev:type>
+					<dev:defaultValue>None</dev:defaultValue>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<command:parameters>
+			<!-- All Parameters-->
+			<command:parameter required="false" globbing="false" pipelineInput="False" variableLength="false" position="named">
+				<maml:name>MailboxEmailId</maml:name>
+				<maml:description>
+					<maml:para>Email Id of Configured Mailbox.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">mailbox@domain.com</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue />
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named">
+				<maml:name>TestEmailId</maml:name>
+				<maml:description>
+					<maml:para>Email Id other than Mailbox Email Id to test the functionality.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">Someone@domain.com</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named">
+				<maml:name>PortForTestEmailId</maml:name>
+				<maml:description>
+					<maml:para>Port No for TestEmailId</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">25</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>Integer</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named">
+				<maml:name>SMTPServerForTestEmailId</maml:name>
+				<maml:description>
+					<maml:para>SMTP server for TestEmailId</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">smtp.domain.com</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named">
+				<maml:name>PortForMailboxEmailId</maml:name>
+				<maml:description>
+					<maml:para>Port Number for Mailbox Email ID</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">mailbox@domain.com</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>Integer</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named">
+				<maml:name>SMTPServerForMailboxEmailId</maml:name>
+				<maml:description>
+					<maml:para>SMTP Server for Mailbox Email ID</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">smtp.domain.com</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="False" variableLength="false" position="named">
+				<maml:name>LogFilePath</maml:name>
+				<maml:description>
+					<maml:para>Path to save Log File.
+NOTE: Path Should present.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValueGroup>
+					<command:parameterValue required="false" variableLength="false">C:\Test Mailbox\Test.log</command:parameterValue>
+				</command:parameterValueGroup>
+				<dev:type>
+					<maml:name>String</maml:name>
+					<maml:uri />
+				</dev:type>
+				<dev:defaultValue>None</dev:defaultValue>
+			</command:parameter>
+		</command:parameters>
+		<command:inputTypes>
+			<!-- Inputs-->
+			<command:inputType>
+				<dev:type>
+					<maml:name>MailboxEmailId</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Email Id of Configured Mailbox.</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>TestEmailId</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Email Id other than Mailbox Email Id to test the functionality.</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>PortForTestEmailId</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Port No for TestEmailId</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>SMTPServerForTestEmailId</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>SMTP server for TestEmailId</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>PortForMailboxEmailId</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Port No for TestEmailId</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>SMTPServerForMailboxEmailId</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>SMTP Server for Mailbox Email ID</maml:para>
+				</maml:description>
+			</command:inputType>
+			<command:inputType>
+				<dev:type>
+					<maml:name>LogFilePath</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>Path to save Log File.
+NOTE: Path Should present.</maml:para>
+				</maml:description>
+			</command:inputType>
+		</command:inputTypes>
+		<command:returnValues>
+			<!-- Outputs-->
+			<command:returnValue>
+				<dev:type>
+					<maml:name>Send and Receive Email to and from Mailbox respectively using different Test Email Id</maml:name>
+					<maml:uri></maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+			</command:returnValue>
+		</command:returnValues>
+		<maml:alertSet>
+			<!-- Notes-->
+			<maml:title>Remark</maml:title>
+			<maml:alert>
+				<maml:para>To see the examples, type: "get-help SendReceiveMail-Mailbox -examples".
+  For more information, type: "get-help SendReceiveMail-Mailbox -detailed".
+  For technical information, type: "get-help SendReceiveMail-Mailbox -full".</maml:para>
+			</maml:alert>
+		</maml:alertSet>
+		<command:examples>
+			<!-- Examples-->
+			<command:example>
+				<maml:title>EXAMPLE 1</maml:title>
+				<maml:introduction>
+					<maml:para />
+				</maml:introduction>
+				<dev:code>C:\PS&gt; SendReceiveMail-Mailbox -MailboxEmailId $MailboxEmailId -TestEmailId $TestEmailId -PortForTestEmailId $PortForTestEmailId -SMTPServerForTestEmailId $SMTPServerForTestEmailId -PortForMailboxEmailId $PortForMailboxEmailId -SMTPServerForMailboxEmailId $SMTPServerForMailboxEmailId -LogFilePath $LogFilePath</dev:code>
+				<dev:remarks>
+					<maml:para />
+				</dev:remarks>
+			</command:example>
+			<command:example>
+				<maml:title>EXAMPLE 2</maml:title>
+				<maml:introduction>
+					<maml:para />
+				</maml:introduction>
+				<dev:code>C:\PS&gt; SendReceiveMail-Mailbox -MailboxEmailId "mailbox@domain.com" -TestEmailId "Someone@domain.com" -PortForTestEmailId 25 -SMTPServerForTestEmailId "smtp.domain.com" -PortForMailboxEmailId 25 -SMTPServerForMailboxEmailId "smtp.domain.com" -LogFilePath "C:\Test Mailbox\Test.log"</dev:code>
+				<dev:remarks>
+					<maml:para />
+				</dev:remarks>
+			</command:example>
+		</command:examples>
+	</command:command>
+	<!-- Edited with: SAPIEN PowerShell HelpWriter 2020 v2.3.46-->
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<!-- Command-->
+		<command:details>
+			<command:name>Send-EmailToNotifyError</command:name>
+			<maml:description>
+				<maml:para>Send Email to specified email id if anything goes wrong in Mailbox.</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para />
+			</maml:copyright>
+			<command:verb>Send</command:verb>
+			<command:noun>EmailToNotifyError</command:noun>
+			<dev:version />
+		</command:details>
+		<maml:description>
+			<maml:para>Automatically called by Test-Mailbox and Test-EmailServerProfile cmdlet, send notification if anything goes wrong in Mailbox.</maml:para>
+		</maml:description>
+		<command:syntax>
+			<!-- Parameter Sets-->
+			<command:syntaxItem>
+				<maml:name>Send-EmailToNotifyError</maml:name>
+			</command:syntaxItem>
+		</command:syntax>
+	</command:command>
+	<!-- Edited with: SAPIEN PowerShell HelpWriter 2020 v2.3.46-->
+</helpItems>
